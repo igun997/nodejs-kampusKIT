@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var dotenv = require('dotenv');
+dotenv.config();
 const app = express();
-const port = 9000;
+const port = process.env.PORT;
 const path = require('path');
 const mysql = require('mysql');
 const querystring = require('querystring');
 const https = require('https');
-const request = require("request")
+const request = require("request");
 const striptags = require('striptags');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
