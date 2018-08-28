@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <select id="ids" name="">
+      <option id="cth1">Contoh 1</option>
+      <option id="cth2">Contoh 2</option>
+    </select>
+    <div id="id_a">
+
+    </div>
+    <script type="text/javascript">
+      var select = document.getElementById('ids'); // ini dari atas
+      select.addEventListener('change',function(e){
+        id = select.value; //dpt data dari id atas
+        var xhttp = new XMLHttpRequest(); //request ajax js murni ambil data jsno dari server
+        xhttp.onreadystatechange = function() { // misalkan request ajax selesai
+          if (this.readyState == 4 && this.status == 200) { // 4 dan 200 selesai
+           document.getElementById("id_a").innerHTML = this.responseText; //ngelurin data bawah
+          }
+        };
+        xhttp.open("GET", "http://localhost:9000/contohjson/"+id, true);
+        xhttp.send();
+      });
+    </script>
+  </body>
+</html>
